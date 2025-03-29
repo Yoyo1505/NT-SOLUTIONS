@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #333;
+            color: white;
+        }
+        th, td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #444;
+        }
+        .total {
+            text-align: right;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cotización</h1>
+    <table id="cotizacion">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí puedes agregar filas -->
+            <tr>
+                <td>Ejemplo 1</td>
+                <td>Descripción del ejemplo 1</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Ejemplo 2</td>
+                <td>Descripción del ejemplo 2</td>
+                <td>200</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="total">
+        <strong>Total: $<span id="total">0</span></strong>
+    </div>
+    <button onclick="generarPDF()">Generar PDF</button>
+
+    <script>
+        function calcularTotal() {
+            let total = 0;
+            const precios = document.querySelectorAll('#cotizacion tbody tr td:last-child');
+            precios.forEach(precio => {
+                total += parseFloat(precio.textContent) || 0;
+            });
+            document.getElementById('total').textContent = total.toFixed(2);
+        }
+
+        function generarPDF() {
+            // Aquí puedes agregar la lógica para generar el PDF
+            alert('Función para generar PDF aún no implementada.');
+        }
+
+        // Calcular el total al cargar la página
+        calcularTotal();
+    </script>
+</body>
+</html>
